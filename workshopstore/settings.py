@@ -1,6 +1,14 @@
 # Django settings for workshopstore project.
 
-DEBUG = True
+import socket
+
+if socket.gethostname() == 'Misha-Shkurats-MacBook-Pro.local':
+    PRODUCTION = False
+else:
+    PRODUCTION = True
+
+
+DEBUG = not PRODUCTION
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -9,12 +17,21 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+if PRODUCTION:
+    DATABASE_NAME = 'workshop'
+    DATABASE_USER = 'workshop'
+    DATABASE_PSWRD = 'ImReDrak'
+else:
+    DATABASE_NAME = 'workshopstore'
+    DATABASE_USER = 'root'
+    DATABASE_PSWRD = 'root'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'workshopstore',              # Or path to database file if using sqlite3.
-        'USER': 'root',                      # Not used with sqlite3.
-        'PASSWORD': 'root',                  # Not used with sqlite3.
+        'NAME': DATABASE_NAME,              # Or path to database file if using sqlite3.
+        'USER': DATABASE_USER,                      # Not used with sqlite3.
+        'PASSWORD': DATABASE_PSWRD,                  # Not used with sqlite3.
         'HOST': '127.0.0.1',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -110,7 +127,8 @@ TEMPLATE_DIRS = (
     '/Users/misha/Documents/py/django/workshopstore/workshopstore/templates'
 )
 
-INSTALLED_APPS = (
+if PRODUCTION:
+    INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -122,7 +140,22 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'products',
-)
+    'gunicorn'
+    )
+else:
+    INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    # Uncomment the next line to enable the admin:
+    'django.contrib.admin',
+    # Uncomment the next line to enable admin documentation:
+    # 'django.contrib.admindocs',
+    'products',
+    )
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
