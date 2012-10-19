@@ -120,14 +120,15 @@ ROOT_URLCONF = 'workshopstore.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'workshopstore.wsgi.application'
 
-TEMPLATE_DIRS = (
+
+if PRODUCTION:
+    TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/Users/misha/Documents/py/django/workshopstore/workshopstore/templates'
-)
-
-if PRODUCTION:
+    '/web/http/workshopstore.com.ua/workshopstore/workshopstore/templates'
+    )
+    
     INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -143,6 +144,12 @@ if PRODUCTION:
     'gunicorn'
     )
 else:
+    TEMPLATE_DIRS = (
+    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    '/Users/misha/Documents/py/django/workshopstore/workshopstore/templates'
+)
     INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
