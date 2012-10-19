@@ -12,7 +12,7 @@ DEBUG = not PRODUCTION
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Misha Shkurat', 'mike.shkurat@gmx.net'),
 )
 
 MANAGERS = ADMINS
@@ -123,9 +123,6 @@ WSGI_APPLICATION = 'workshopstore.wsgi.application'
 
 if PRODUCTION:
     TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
     '/web/http/workshopstore.com.ua/workshopstore/workshopstore/templates'
     )
     
