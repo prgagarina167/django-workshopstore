@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block content %}
+<div id="content">
+    <div class="grid_detail">
+        {% with image_list|first as image %}
+        <a href="{{ image.url }}" rel="lightbox[detail]" title="{{ product }}" border="1px"><img src="{% if image.image %}{% thumbnail image.image 450x450 %}{% else %}/media/product_images/калндр_1.jpg{% endif %}" width="450px"  border="1px" style="border-color: black"></a><br /><br />
+        {% endwith %}
+        {% for image in image_list %}
+            <a href="{{ image.url }}" rel="lightbox[detail]" title="{{ product }}"><img src="{% thumbnail image.image 100x100 %}" border="0px"></a>&nbsp;&nbsp;&nbsp;
+        {% endfor %}
+    </div>
+    <div id="detail-description" class="grid_2">
+    <p class="big"><b>{{ product }}</b></p>
+    <p class="description">{{ product.description|linebreaksbr }}</p> 
+    <br />{{ product.price}} грн.<br />
+    {% if product.variant_set.all %}
+	 <p class="description">Варианты:<br />
+		{% for variant in product.variant_set.all %}
+		   {{ variant.name }}<br />
+		{% endfor %}
+	 </p>
+	 {% endif %}<br />
+    <a class="btn">Добавить в корзину</a>
+    </div>
+    <div class="clear"></div>
+    <br /><br /><br />
+     <div class="items-normal">
+		{% if latest_products %}
+		    <h4 align="left">Еще в категории</h2>
+		    {% for product in latest_products %}
+		        <a class="item-index" href="/product/{{ product.id}}/">
+			        <div class="item {% if forloop.counter|divisibleby:"4" %}last{% endif%}">
+			            <div><img src="{% with product.productimage_set.all|first as image %}{% if image.image %}{% thumbnail image.image 200x120 crop="smart" %}{% else %}{{ STATIC }}/static/item.jpg{% endif %}{% endwith %}"/></div>
+			            <div class="item-name">{{ product.name|truncatewords:"100" }}</div>
+			            <div class="item-price">{{ product.price }} грн</div>
+			        </div>
+		        </a>
+		    {% endfor %}	    
+		{% endif %}
+    <div class="clear"></div>
+	</div>
+
+</div>
+{% endblock %}

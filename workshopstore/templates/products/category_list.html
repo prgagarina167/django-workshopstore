@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block content %}
+<div id="content">
+	<div class="items-normal">
+		{% if products %}
+		    <h4 align="left">{{ category }}</h2>
+		    {% for product in products %}
+		        <a class="item-index" href="/product/{{ product.id}}/">
+			        <div class="item {% if forloop.counter|divisibleby:"4" %}last{% endif%}">
+			            <div><img src="{% with product.productimage_set.all|first as image %}{% if image.image %}{% thumbnail image.image 200x120 crop="smart" %}{% else %}{{ STATIC }}/static/item.jpg{% endif %}{% endwith %}"/></div>
+			            <div class="item-name">{{ product.name|truncatewords:"100" }}</div>
+			            <div class="item-price">{{ product.price }} грн</div>
+			        </div>
+		        </a>
+		    {% endfor %}	    
+		{% endif %}
+    <div class="clear"></div>
+	</div>
+	
+</div>
+{% endblock %}
