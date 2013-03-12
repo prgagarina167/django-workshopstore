@@ -86,8 +86,6 @@ if PRODUCTION:
 	    # Always use forward slashes, even on Windows.
 	    # Don't forget to use absolute paths, not relative paths.
 	    '/web/http/workshopstore.com.ua/wss/django-workshopstore/products/static/',
-	    '/web/http/workshopstore.com.ua/wss/django-workshopstore/static/'
-	    
 	)
 else:
 	# Absolute filesystem path to the directory that will hold user-uploaded files.
