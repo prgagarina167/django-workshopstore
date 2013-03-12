@@ -8,7 +8,7 @@ else:
     PRODUCTION = True
 
 
-DEBUG = not PRODUCTION
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
