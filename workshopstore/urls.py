@@ -9,7 +9,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'workshopstore.views.home', name='home'),
+    url(r'^$', ProductList.as_view(), name='index'),
     # url(r'^workshopstore/', include('workshopstore.foo.urls')),
     #url(r'^products/$', 'products.views.index'),
     url(r'^products/$', ProductList.as_view()),
