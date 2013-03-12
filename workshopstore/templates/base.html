@@ -19,19 +19,19 @@
 	<body lang="en">
 	    <div class="container_4">
 	        <div id="logo">
-	            <h2><a href="{% url index %}"><img src="{{ STATIC_URL }}logo.png"></a></h2>
+	            <h2><a href="{{ request.get_host }}"><img src="{{ STATIC_URL }}logo.png"></a></h2>
 	        </div>
 	        <div id="menu">
 	            <ul>
-                    <a href="{% url index %}"><li id="shop">Магазин</li></a>
-                    <a href="{% url index %}contact/"><li id="contact">Контакт</li></a>
-                    <a href="{% url index %}"><li id="home">Корзина</li></a>
+                    <a href="{{ request.get_host }}"><li id="shop">Магазин</li></a>
+                    <a href="{{ request.get_host }}contact/"><li id="contact">Контакт</li></a>
+                    <a href="{{ request.get_host }}"><li id="home">Корзина</li></a>
                 </ul>
 	        </div>
 	        <div id="submenu">
 	            <ul>{% if categories %}
 		                {% for cat in categories %}
-		                    <a href="{% url index %}products/{{ cat.id }}" {% if cat.id == category.id %}class="active"{% endif %}><li id="menu_{{ cat.id }}">{{ cat.name }}</li></a>
+		                    <a href="{{ request.get_host }}products/{{ cat.id }}" {% if cat.id == category.id %}class="active"{% endif %}><li id="menu_{{ cat.id }}">{{ cat.name }}</li></a>
 	                    {% endfor %}
 	                {% else %}
 	                    <a href=""><li>Часы</li></a>
