@@ -25,6 +25,7 @@
 			    list-style-type: none; 
 			    width: 100%;
 			    -webkit-padding-start: 0px;
+			    padding-left: 0px;
 			}
 			.clear {clear: both; height: 1px; overflow: hidden;}
 			
@@ -36,7 +37,7 @@
 			}
 					
 			#logo
-			a:link {color: rgb(251,251,251);
+			a:link     {color: rgb(251,251,251);
 			             text-decoration:none;
 			             font: 16px/24px Futura, serif;
 			             font-size: 42px;
@@ -53,7 +54,7 @@
 			    left: 0px;
                 top: -26px;
             }
-		    #menu a {text-decoration: none; background-color: rgb(251,251,251); font-size: 14px}	
+		    #menu a:link {text-decoration: none; color: rgb(60,60,60); background-color: rgb(251,251,251); font-size: 14px}	
             #menu a:hover {color: rgb(249,88,37); background-color: rgb(251,251,251)}
             #menu li {display: inline; margin: 0px 0px 0px 0px; padding: 2px 5px 2px 5px; list-style-type: none; border: 0px solid}
             
@@ -63,7 +64,7 @@
 			    left: 0px;
                 top: -37px; /* For regulation of distance between menu and submenu */
             }
-		    #submenu a {text-decoration: none; background-color: rgb(251,251,251); font-size: 13px}	
+		    #submenu a {text-decoration: none; color: rgb(60,60,60);  background-color: rgb(251,251,251); font-size: 13px}	
             #submenu a:hover {color: rgb(249,88,37); background-color: rgb(251,251,251)}
             #submenu li {display: inline; margin: 0px 0px 0px 0px; padding: 2px 5px 2px 5px; list-style-type: none; border: 0px solid}
 			
