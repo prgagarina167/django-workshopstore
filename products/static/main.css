@@ -37,14 +37,14 @@
 			}
 					
 			#logo
-			a:link     {color: rgb(251,251,251);
+			a:link, a:visited{color: rgb(60,60,60);
 			             text-decoration:none;
 			             font: 16px/24px Futura, serif;
 			             font-size: 42px;
 				         line-height: 48px;
 			            }
 			a:visited {color: rgb(60,60,60);}  /* visited link */
-			a:hover {color: rgb(70,70,70);}  /* mouse over link */
+			a:hover {color: rgb(249,88,37);}  /* mouse over link */
 			
 			a.active {color: rgb(249,88,37)}
 			
@@ -54,7 +54,8 @@
 			    left: 0px;
                 top: -26px;
             }
-		    #menu a:link {text-decoration: none; color: rgb(60,60,60); background-color: rgb(251,251,251); font-size: 14px}	
+		    #menu a:link {color: rgb(60,60,60); background-color: rgb(251,251,251); font-size: 14px; text-decoration:none;}	
+		   /* #menu a:visited {text-decoration: none; color: rgb(60,60,60); background-color: rgb(251,251,251); font-size: 14px}*/
             #menu a:hover {color: rgb(249,88,37); background-color: rgb(251,251,251)}
             #menu li {display: inline; margin: 0px 0px 0px 0px; padding: 2px 5px 2px 5px; list-style-type: none; border: 0px solid}
             
@@ -64,8 +65,11 @@
 			    left: 0px;
                 top: -37px; /* For regulation of distance between menu and submenu */
             }
-		    #submenu a {text-decoration: none; color: rgb(60,60,60);  background-color: rgb(251,251,251); font-size: 13px}	
+		    #submenu a:link {color: rgb(60,60,60); text-decoration: none; background-color: rgb(251,251,251); font-size: 13px}	
             #submenu a:hover {color: rgb(249,88,37); background-color: rgb(251,251,251)}
+            
+            #submenu a.active:link {color: rgb(249,88,37); text-decoration: none; background-color: rgb(251,251,251); font-size: 13px}
+            #submenu a.active:hover {color: rgb(249,88,37); background-color: rgb(251,251,251)}
             #submenu li {display: inline; margin: 0px 0px 0px 0px; padding: 2px 5px 2px 5px; list-style-type: none; border: 0px solid}
 			
 			#content {
