@@ -19,7 +19,7 @@
 	<body lang="en">
 	    <div class="container_4">
 	        <div id="logo">
-	            <h2><a href="/"><img src="{{ STATIC_URL }}logo.png"></a></h2>
+	            <h2><a href="{% url 'index' %}"><img src="{{ STATIC_URL }}logo.png"></a></h2>
 	        </div>
 	        <div id="menu">
 	            <ul>
@@ -46,7 +46,7 @@
 	        {% block content %}{% endblock %}
 	        
 	        {% block footer %}
-	        <div id="footer" class="small">&copy; Workshop Store 2012 / Reytarska Str. 35B / Tel. +38 (097) 789-15-91</div>
+	        <div id="footer" class="small">&copy; 2013 Workshop Store / Киев, ул. Горького 102–104 / Тел. +38 (097) 789-15-91</div>
 	        {% endblock %}
 	    </div>
 	</body>
