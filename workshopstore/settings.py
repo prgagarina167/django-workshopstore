@@ -168,7 +168,8 @@ if PRODUCTION:
     # 'django.contrib.admindocs',
     'products',
     'gunicorn',
-    'easy_thumbnails'
+    'easy_thumbnails',
+    'cart'
     )
     
     TEMPLATE_CONTEXT_PROCESSORS = (
