@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block content %}
+<div id="content">
+	    <div id="detail-description" class="grid_3">
+	      {% if cart_total > 0 %}
+	        <table class="table table-striped">
+	            <thead>
+	            <tr>
+	              <th>Товар</th>
+	              <th>Количество</th>
+	              <th>Цена</th>
+	              <th></th>
+	            </tr>
+	            </thead>
+	            {% for item in cart %}
+	            <tr>
+	              <td>{{ item.product.name }}</td>
+	              <td>{{ item.quantity }}</td>
+	              <td>{{ item.total_price }}</td>
+	              <td><a class="btn btn-mini" href="/cart/remove/{{ item.product.id }}">Удалить</a></td>
+	            </tr>
+	            {% endfor %}
+	            <tr>
+	              <td>&nbsp;</td>
+	              <td><b>Сумма, грн.</b></td>
+	              <td><b>{{ cart_total }}</b></td>
+	              <td>&nbsp;</td>
+	            </tr>
+	        </table>
+	        
+	        <p class="description" align="left">
+	        <a class="btn btn-large btn-warning" href="/cart/">Заказать</a></p>
+	     </div>
+	     {% else %}
+	     <div id="detail-description" class="grid_4">
+	         <p class="description" align="center">Ваша корзина пуста.</p>
+	     </div>
+	     {% endif %}
+	    <div class="clear"></div>
+	    </div>
+{% endblock %}

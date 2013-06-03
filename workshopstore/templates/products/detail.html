@@ -12,17 +12,19 @@
         {% endfor %}
     </div>
     <div id="detail-description" class="grid_2">
-    <p class="big"><b>{{ product }}</b></p>
-    <p class="description">{{ product.description|linebreaksbr }}</p> 
-    <br />{{ product.price}} грн.<br />
-    {% if product.variant_set.all %}
-	 <p class="description">Варианты:<br />
-		{% for variant in product.variant_set.all %}
-		   {{ variant.name }}<br />
-		{% endfor %}
-	 </p>
-	 {% endif %}<br />
-    <a class="btn">Добавить в корзину</a>
+	    <p class="big"><b>{{ product }}</b></p>
+	    <p class="description">{{ product.description|linebreaksbr }}</p> 
+	    <h3>{{ product.price }} грн.</h3>
+	    {% if product.variant_set.all.count > 1 %}	
+		    <select>
+				{% for variant in product.variant_set.all %}
+				   <option>{{ variant.name }}</option>
+				{% endfor %}
+			</select>
+	    {% else %}
+	       {% for variant in product.variant_set.all %}<p class="description">{{ variant.name }}</p>{% endfor %}
+		{% endif %}<br />
+	    <a class="btn" href="/cart/add/{{ product.id }}">Добавить в корзину</a>
     </div>
     <div class="clear"></div>
     <br /><br /><br />
@@ -30,7 +32,7 @@
 		{% if latest_products %}
 		    <h4 align="left">Еще в категории</h2>
 		    {% for product in latest_products %}
-		        <a class="item-index" href="/product/{{ product.id}}/">
+		        <a class="item-index" href="/product/{{ product.id }}/">
 			        <div class="item {% if forloop.counter|divisibleby:"4" %}last{% endif%}">
 			            <div><img src="{% with product.productimage_set.all|first as image %}{% if image.image %}{% thumbnail image.image 200x120 crop="smart" %}{% else %}{{ STATIC }}/static/item.jpg{% endif %}{% endwith %}"/></div>
 			            <div class="item-name">{{ product.name|truncatewords:"100" }}</div>
