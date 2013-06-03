@@ -3,7 +3,7 @@
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormView
 from products.models import Product, ProductImage, Designer, Category
-from cart import Cart, ItemAlreadyExists, ItemDoesNotExist, ContactForm
+from cart import Cart, ItemAlreadyExists, ItemDoesNotExist
 
 # django shortcut for passing a context to HttpResponse and 404 error
 from django.shortcuts import render_to_response, get_object_or_404
