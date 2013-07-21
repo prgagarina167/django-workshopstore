@@ -1,7 +1,6 @@
 # Create your views here.
 
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import FormView
 from products.models import Product, ProductImage, Designer, Category
 from cart import Cart, ItemAlreadyExists, ItemDoesNotExist
 
@@ -10,16 +9,20 @@ from django.shortcuts import render_to_response, get_object_or_404
 import django.contrib.staticfiles
 from django.http import HttpResponse, Http404
 
-class ContactView(FormView):
-    template_name = 'products/contact.html'
-    form_class = ContactForm
-    success_url = '/products/'
+# form
+from products.forms import ContactForm
+from django.views.generic.edit import FormView
 
-    def form_valid(self, form):
+#class ContactView(FormView):
+#    template_name = 'products/contact.html'
+#    form_class = ContactForm
+#    success_url = '/products/'
+#
+#    def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.
-        form.send_email()
-        return super(ContactView, self).form_valid(form)
+#        form.send_email()
+#        return super(ContactView, self).form_valid(form)
 
 class ProductList(ListView):
     model = Product
@@ -117,6 +120,16 @@ class RemoveFromCartList(ListView):
         context['cart_total'] = Cart(self.request).summary
         return context
 
+class WritemeView(FormView):
+    template_name = 'contact.html'
+    form_class = ContactForm
+    success_url = '/'
+
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+        form.send_email()
+        return super(ContactView, self).form_valid(form)
 
 # django-cart views
 def add_to_cart(request, product_id):

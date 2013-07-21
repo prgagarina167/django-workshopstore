@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
-from products.views import ProductList, ProductDetail, CategoryList, ContactList, CartList, AddtoCartList, RemoveFromCartList, ContactView
+from products.views import ProductList, ProductDetail, CategoryList, ContactList, CartList, AddtoCartList, RemoveFromCartList
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
