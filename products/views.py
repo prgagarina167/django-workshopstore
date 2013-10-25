@@ -10,8 +10,10 @@ import django.contrib.staticfiles
 from django.http import HttpResponse, Http404
 
 # form
-from products.forms import ContactForm
-from django.views.generic.edit import FormView
+#from products.forms import ContactForm
+#from django.views.generic.edit import FormView
+
+from django.core.mail import send_mail
 
 #class ContactView(FormView):
 #    template_name = 'products/contact.html'
@@ -67,8 +69,11 @@ class ProductDetail(DetailView):
         return context
 
 class ContactList(ListView):
+
     queryset = Product.objects.all()
     template_name = 'products/contact.html'
+    #send_mail('workshopstore order', 'Here is the message.', 'from@example.com', ['mike.shkurat@gmx.net'], fail_silently=False)
+
     
     def get_context_data(self, **kwargs):
         context = super(ContactList, self).get_context_data(**kwargs)
@@ -120,16 +125,6 @@ class RemoveFromCartList(ListView):
         context['cart_total'] = Cart(self.request).summary
         return context
 
-class WritemeView(FormView):
-    template_name = 'contact.html'
-    form_class = ContactForm
-    success_url = '/'
-
-    def form_valid(self, form):
-        # This method is called when valid form data has been POSTed.
-        # It should return an HttpResponse.
-        form.send_email()
-        return super(ContactView, self).form_valid(form)
 
 # django-cart views
 def add_to_cart(request, product_id):
